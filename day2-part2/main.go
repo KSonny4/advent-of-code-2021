@@ -18,6 +18,7 @@ func main() {
 
 	horizontal := 0
 	depth := 0
+	aim := 0
 	for s.Scan() {
 		var command string
 		var n int
@@ -25,13 +26,14 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not read %s: %v", s.Text(), err)
 		}
-
 		if command == "forward"{
+
 			horizontal += n
-		} else if command == "up" {
-			depth -= n
-		} else if command == "down" {
-			depth += n		
+			depth += aim * n 
+		} else if command == "up" {			
+			aim -= n
+		} else if command == "down" {			
+			aim += n
 		} else {
 			panic(fmt.Sprintf("Unknown command: %s", command))
 		}
