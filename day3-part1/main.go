@@ -9,15 +9,15 @@ import (
 	"strings"
 )
 
-func int_binary_arr_to_decimal(sigBits []int) (error, int64) {
+func int_binary_arr_to_decimal(sigBits []int) (int64, error) {
 	binary := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(sigBits)), ""), "[]")
 
 	decimal, err := strconv.ParseInt(binary, 2, 64)
 	if err != nil {
 		fmt.Println(err)
-		return err, -1
+		return -1, err
 	}
-	return nil, decimal
+	return decimal, nil
 }
 
 func main() {
@@ -56,7 +56,7 @@ func main() {
 		}
 	}
 
-	err, gamma := int_binary_arr_to_decimal(sigBits)
+	gamma, err := int_binary_arr_to_decimal(sigBits)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -71,7 +71,7 @@ func main() {
 		}
 	}
 
-	err, eps := int_binary_arr_to_decimal(reversedSigBits)
+	eps, err := int_binary_arr_to_decimal(reversedSigBits)
 	if err != nil {
 		fmt.Println(err)
 		return
