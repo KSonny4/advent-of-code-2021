@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Tuple, Optional
-from pprint import pprint
+
 
 @dataclass
 class Cell:
@@ -17,27 +17,31 @@ def tag_boards(num: int, boards: List[List[List[Cell]]]) -> None:
 
 
 def check_boards(boards: List[List[List[Cell]]]) -> Optional[List[List[Cell]]]:
-    for num,board in enumerate(boards):
+    for num, board in enumerate(boards):
         # Check rows
         for row in board:
             if all([x.hit for x in row]):
                 return board
 
+        # Check cols
         for col in range(5):
             if all([board[row][col].hit for row in range(5)]):
                 return board
     return None
 
-def sum_board_unmarked(board: List[List[Cell]]) -> int:
-    a  = []
-    for row in board:
-      for cell in row:
-        if not cell.hit:
-          a.append(cell.num)
-    return sum(a)
-    
 
-def play(numbers: List[int], boards: List[List[List[Cell]]]) -> Tuple[int, List[List[Cell]]]:
+def sum_board_unmarked(board: List[List[Cell]]) -> int:
+    a = []
+    for row in board:
+        for cell in row:
+            if not cell.hit:
+                a.append(cell.num)
+    return x
+
+
+def play(
+    numbers: List[int], boards: List[List[List[Cell]]]
+) -> Tuple[int, List[List[Cell]]]:
     for num in numbers:
         tag_boards(num, boards)
         winner_board = check_boards(boards)
@@ -60,7 +64,8 @@ def main():
 
     sum_umarked = sum_board_unmarked(winner_board)
 
-    print(sum_umarked*last_number)
+    print(sum_umarked * last_number)
+
 
 if __name__ == "__main__":
     main()
