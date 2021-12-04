@@ -36,7 +36,7 @@ def sum_board_unmarked(board: List[List[Cell]]) -> int:
         for cell in row:
             if not cell.hit:
                 a.append(cell.num)
-    return x
+    return sum(a)
 
 
 def play(
