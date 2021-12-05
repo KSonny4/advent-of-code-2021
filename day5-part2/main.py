@@ -91,9 +91,9 @@ class Pipe:
 def main():
 
     with open("input1.txt", encoding="utf-8") as f:
-        raw_input = [x.strip().split("->") for x in f.readlines()]
+        raw_input = [x.strip().split(" -> ") for x in f.readlines()]
     data = [
-        [list(map(int, y.split(","))) for y in list(map(str.strip, x))]
+        [map(int, y.split(",")) for y in x]
         for x in raw_input
     ]
 
