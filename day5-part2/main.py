@@ -17,11 +17,21 @@ class Pipe:
     @property
     def x(self) -> int:
         # use this to easily acccess x when they are same
+        if self.start.x != self.end.x:
+            raise Exception(
+                f"Error when accesing attribute x for {self}."
+                " You want to access this method only if self.start.x != self.end.x."
+            )
         return self.start.x
 
     @property
     def y(self) -> int:
         # use this to easily acccess y when they are same
+        if self.start.y != self.end.y:
+            raise Exception(
+                f"Error when accesing attribute y for {self}."
+                " You want to access this method only if self.start.y != self.end.y"
+            )
         return self.start.y
 
     def y_range(self) -> Generator[int, None, None]:
@@ -92,10 +102,7 @@ def main():
 
     with open("input1.txt", encoding="utf-8") as f:
         raw_input = [x.strip().split(" -> ") for x in f.readlines()]
-    data = [
-        [map(int, y.split(",")) for y in x]
-        for x in raw_input
-    ]
+    data = [[map(int, y.split(",")) for y in x] for x in raw_input]
 
     pipes = [Pipe(start=Coordinates(*x[0]), end=Coordinates(*x[1])) for x in data]
 
