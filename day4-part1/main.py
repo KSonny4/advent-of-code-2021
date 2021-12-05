@@ -50,9 +50,9 @@ def play(
 
 
 def main():
-    with open("input.txt", encoding="utf-8") as f:
-        numbers, *boards = f.read().rstrip().split("\n\n")
-
+    with open("input1.txt", encoding="utf-8") as f:
+        a = f.read().rstrip().split("\n\n")
+    breakpoint()
     numbers = [int(num) for num in numbers.split(",")]
     boards = [[line.split() for line in board.split("\n")] for board in boards]
 
