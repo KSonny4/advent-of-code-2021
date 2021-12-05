@@ -25,17 +25,15 @@ class Pipe:
         return self.start.y
 
     def y_range(self) -> Generator[int, None, None]:
-        if self.start.y > self.end.y:
-            return range(self.end.y, self.start.y + 1)
-        if self.start.y < self.end.y:
-            return range(self.start.y, self.end.y + 1)
+        y1 = self.start.y
+        y2 = self.end.y
+        return range(min(y1, y2), max(y1, y2) + 1)
 
     def x_range(self) -> Generator[int, None, None]:
-        if self.start.x > self.end.x:
-            return range(self.end.x, self.start.x + 1)
-        if self.start.x < self.end.x:
-            return range(self.start.x, self.end.x + 1)
-
+        x1 = self.start.x 
+        x2 = self.end.x
+        return range(min(x1, x2), max(x1, x2) + 1)
+        
     @property
     def is_same_x_coord(self) -> bool:
         return self.start.x == self.end.x
