@@ -48,10 +48,10 @@ class Pipe:
 
 
 def main():
-    with open("input.txt", encoding="utf-8") as f:
-        raw_input = [x.strip().split("->") for x in f.readlines()]
+    with open("input1.txt", encoding="utf-8") as f:
+        raw_input = [x.strip().split(" -> ") for x in f.readlines()]
     data = [
-        [map(int, y.split(",")) for y in map(str.strip, x)]
+        [map(int, y.split(",")) for y in x]
         for x in raw_input
     ]
 
