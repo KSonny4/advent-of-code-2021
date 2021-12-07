@@ -69,7 +69,7 @@ def main():
     crosses = defaultdict(dict)
 
     # Layout where pipe lays in grid
-    for pipe in filtered_pipes:        
+    for pipe in filtered_pipes:
         if pipe.is_same_x_coord:
             for y_pos in pipe.y_range():
                 crosses[pipe.x][y_pos] = crosses.get(pipe.x, {}).get(y_pos, 0) + 1

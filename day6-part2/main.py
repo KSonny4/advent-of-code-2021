@@ -1,6 +1,6 @@
 def main():
     fishes_growth = 9 * [0]
-    
+
     with open("input.txt", encoding="utf-8") as f:
         lanternfishes = map(int, f.read().split(","))
 
