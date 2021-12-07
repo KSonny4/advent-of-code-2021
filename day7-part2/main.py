@@ -13,8 +13,7 @@ def main():
     best_res = float("inf")
     for i in range(min(data), max(data) + 1):
         res = sum([range_sum(abs(x - i)) for x in data])
-        if res < best_res:
-            best_res = res
+        best_res = min(best_res, res)
     print(best_res)
 
 
