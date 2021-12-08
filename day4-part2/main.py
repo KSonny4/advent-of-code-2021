@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from typing import List, Tuple, Optional
 from pprint import pprint
+from typing import List, Optional, Tuple
 
 
 @dataclass
