@@ -38,10 +38,14 @@ def get_neighbours(
         new_i = i + x
         new_j = j + y
         if (0 <= new_i <= len_i) and (0 <= new_j <= len_j):
-            if data[new_i][new_j] != 9:
-                if not (new_i == 0 and new_j == 0):
-                    if Point(new_i, new_j, data[new_i][new_j]) not in visited:
-                        neighbours.append(Point(new_i, new_j, data[new_i][new_j]))
+            if (
+                data[new_i][new_j] == 9
+                or (new_i == 0 and new_j == 0)
+                or Point(new_i, new_j, data[new_i][new_j]) in visited
+            ):
+                continue
+              
+            neighbours.append(Point(new_i, new_j, data[new_i][new_j]))
     return neighbours
 
 
