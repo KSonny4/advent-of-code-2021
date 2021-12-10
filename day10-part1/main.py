@@ -39,9 +39,9 @@ def main():
 
     total = 0
     for string in data:
-      result = check(string)
-      if result:
-        total += price[result]
+        result = check(string)
+        if result:
+            total += price[result]
     print(total)
 
 

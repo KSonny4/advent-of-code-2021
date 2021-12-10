@@ -1,4 +1,4 @@
-from typing import Union,List
+from typing import Union, List
 
 price = {
     "{": 3,
@@ -11,12 +11,14 @@ price = {
     ">": 4,
 }
 
-def get_total_score(result:str) -> int:
-  total = 0
-  for x in result:
-    total *= 5
-    total += price[x]
-  return total
+
+def get_total_score(result: str) -> int:
+    total = 0
+    for x in result:
+        total *= 5
+        total += price[x]
+    return total
+
 
 def check(string: str) -> Union[str, List[str]]:
     q = []
@@ -41,19 +43,17 @@ def check(string: str) -> Union[str, List[str]]:
 
 def main():
 
-
     with open("input.txt", encoding="utf-8") as f:
         data = [x.strip() for x in f.readlines()]
 
     results = []
     for string in data:
-      result = check(string)
-      if isinstance(result, list):
-        total = get_total_score(result)
-        results.append(total)
+        result = check(string)
+        if isinstance(result, list):
+            total = get_total_score(result)
+            results.append(total)
     results = sorted(results)
-    print(results[len(results)//2])
-
+    print(results[len(results) // 2])
 
 
 if __name__ == "__main__":
