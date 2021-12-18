@@ -31,7 +31,10 @@ def simulate(args):
         if debug:
             print(x_pos, y_pos)
 
-        if landing_zone[0][0] <= x_pos <= landing_zone[0][1] and landing_zone[1][0] <= y_pos <= landing_zone[1][1]:
+        if (
+            landing_zone[0][0] <= x_pos <= landing_zone[0][1]
+            and landing_zone[1][0] <= y_pos <= landing_zone[1][1]
+        ):
             return max_y_val
 
     return None
@@ -40,24 +43,26 @@ def simulate(args):
 def main():
     start = datetime.now()
     with open("input.txt", encoding="utf-8") as f:
-        landing_zone = [[int(y) for y in x[2:].split("..")] for x in
-                        f.read().strip().replace("target area: ", "").split(", ")]
+        landing_zone = [
+            [int(y) for y in x[2:].split("..")]
+            for x in f.read().strip().replace("target area: ", "").split(", ")
+        ]
 
     print(f"Landing zone: {landing_zone}")
 
-    print(f"Part 1 Using formula: {min(landing_zone[1]) * (min(landing_zone[1]) + 1) // 2}")
+    print(
+        f"Part 1 Using formula: {min(landing_zone[1]) * (min(landing_zone[1]) + 1) // 2}"
+    )
 
     x1 = 0
     x2 = 250
     y1 = -100
     y2 = 250
 
-    possible_vals = [(x, y, landing_zone) for x in range(x1, x2) for y in
-                     range(y1, y2)]
+    possible_vals = [(x, y, landing_zone) for x in range(x1, x2) for y in range(y1, y2)]
 
     with ProcessPoolExecutor() as executor:
         succ_vals = [x for x in executor.map(simulate, possible_vals) if x is not None]
-
 
     if debug:
         print(succ_vals)
@@ -65,6 +70,7 @@ def main():
         print(f"Part 1: {max(succ_vals)}")
         print(f"Part 2: Total possible velocities: {len(succ_vals)}")
     print(f"Duration: {datetime.now() - start}")
+
 
 if __name__ == "__main__":
     main()
