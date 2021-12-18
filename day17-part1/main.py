@@ -47,9 +47,9 @@ def main():
 
     print(f"Part 1 Using formula: {min(landing_zone[1]) * (min(landing_zone[1]) + 1) // 2}")
 
-    x1 = -250
+    x1 = 0
     x2 = 250
-    y1 = -250
+    y1 = -100
     y2 = 250
 
     possible_vals = [(x, y, landing_zone) for x in range(x1, x2) for y in
